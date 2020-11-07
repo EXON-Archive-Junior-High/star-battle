@@ -1,14 +1,20 @@
 import React from 'react'
 import './App.css'
-import request from 'superagent'
+import superagent from 'superagent'
 
-function App() {
-    alert(request.get('https://api.github.com/users/1-exon/repos').toString())
-    const repos = JSON.parse(request.get('https://api.github.com/users/1-exon/repos').toString())
-    let stars: number = 0
-    for (let i: number = 0; i < repos.length; i++) {
-        stars += repos[i].stargazers_count
+async function App() {
+    try {
+        const repos = superagent.get('https://api.github.com/users/1-exon/repos')
+        .end((err, res) => {
+            alert(res)
+        })
+    } catch (err) {
+        console.log(err)
     }
+    // let stars: number = 0
+    // for (let i: number = 0; i < repos.length; i++) {
+    //     stars += repos[i].stargazers_count
+    // }
     return (
         <div className="App">
             <header className="App-header">
@@ -19,7 +25,6 @@ function App() {
                 <div className="main">
                     <input id="users"></input>
                     <button>검색</button>
-                    <h1>{stars}</h1>
                 </div>
 
             </header>
