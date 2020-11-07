@@ -1,0 +1,16 @@
+{
+  "name": "star-battle",
+  "version": "1.0.0",
+  "description": "깃허브 스타 사이트",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/1-EXON/star-battle.git",
+  "author": "시혁 박 <exon.indiv@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1-EXON/star-battle/issues"
+  },
+  "homepage": "https://github.com/1-EXON/star-battle#readme"
+}
