@@ -2,15 +2,16 @@ import React from 'react'
 import './App.css'
 
 function App() {
+    let stars: number = 0
     fetch('https://api.github.com/users/1-exon/repos')
     .then(res => {
-        // let stars: number = 0
-        // for (let i: number = 0; i < repos.json().length; i++) {
-        //     stars += res.json().stargazers_count
-        // }
         res.json()
         .then(repos => {
-            console.log(repos)
+            for (let i: number = 0; i < repos.length; i++) {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                stars += repos[i].stargazers_count
+            }
+            console.log(stars)
         })
     })
     return (
