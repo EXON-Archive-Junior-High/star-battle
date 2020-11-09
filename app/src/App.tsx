@@ -1,19 +1,12 @@
 import React from 'react'
 import './css/App.css'
 
+import { getStar } from './data/GetStar'
+
+const getUserStar = async () => { return await getStar() }
+
 function App() {
-    let stars: number = 0
-    fetch('https://api.github.com/users/1-exon/repos')
-    .then(res => {
-        res.json()
-        .then(repos => {
-            for (let i: number = 0; i < repos.length; i++) {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                stars += repos[i].stargazers_count
-            }
-            console.log(stars)
-        })
-    })
+
     return (
         <div className="App">
             <header className="App-header">
@@ -25,7 +18,6 @@ function App() {
                     <input id="users"></input>
                     <button>검색</button>
                 </div>
-
             </header>
         </div>
     )
