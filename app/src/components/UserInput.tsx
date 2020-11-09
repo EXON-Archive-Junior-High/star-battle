@@ -16,8 +16,8 @@ class UserInput extends Component {
         return (
             <div className="search">
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Github User Id" onChange={this.handleFirstChange}></input>
-                    <input placeholder="Github User Id" onChange={this.handleSecondChange}></input>
+                    <input placeholder="Github Id" onChange={this.handleFirstChange}></input>
+                    <input placeholder="Github Id" onChange={this.handleSecondChange}></input>
                     <button onClick={() => {
                         getUserStar(this.state.first).then(star => console.log('1: ' + star))
                         getUserStar(this.state.second).then(star => console.log('2: ' + star))
