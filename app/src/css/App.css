@@ -66,3 +66,8 @@ table {
     border-spacing: 10px;
     border-color: white;
 }
+
+td, th {
+    border-bottom: 0.1rem solid #e1e1e1;
+    padding-bottom: 0.3em;
+}

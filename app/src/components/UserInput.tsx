@@ -50,13 +50,19 @@ class UserInput extends Component {
                         <tbody>
                             <th>
                                 <td>star</td>
+                                <br/>
                                 <td>followers</td>
+                                <br/>
                                 <td>commits</td>
+                                <br/>
                             </th>
                             <th>
                                 <td>star</td>
+                                <br/>
                                 <td>followers</td>
+                                <br/>
                                 <td>commits</td>
+                                <br/>
                             </th>
                         </tbody>
                     </table>
