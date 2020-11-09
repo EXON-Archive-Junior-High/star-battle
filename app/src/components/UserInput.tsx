@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getStar as getUserStar } from '../data/GetStar'
-import { user1, user2 } from '../data/users'
+import { user1, user2 } from '../models/users'
 
 class UserInput extends Component {
     public state = { first: '', second: '' }
