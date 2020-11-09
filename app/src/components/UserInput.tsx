@@ -2,28 +2,37 @@ import React, { Component } from 'react'
 import { getStar as getUserStar } from '../data/GetStar'
 
 class UserInput extends Component {
-    public state = { name: '' }
+    public state = { first: '', second: '' }
 
     public handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
     }
 
-    public handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    public handleChangeFirst(e: React.ChangeEvent<HTMLInputElement>) {
         this.setState({
-            name: e.target.value
+            first: e.target.value
+        })
+    }
+
+    public handleChangeSecond(e: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({
+            second: e.target.value
         })
     }
 
     public async search() {
-        const stars = await getUserStar(this.state.name)
-        console.log(stars)
+        const stars1 = await getUserStar(this.state.first)
+        const stars2 = await getUserStar(this.state.second)
+        console.log('1:', stars1)
+        console.log('2:', stars2)
     }
 
     public render() {
         return (
             <div className="search">
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input placeholder="Github User Id" onChange={this.handleChange.bind(this)}></input>
+                    <input placeholder="Github User Id" onChange={this.handleChangeFirst.bind(this)}></input>
+                    <input placeholder="Github User Id" onChange={this.handleChangeSecond.bind(this)}></input>
                     <button onClick={this.search.bind(this)}>검색</button>
                 </form>
             </div>
