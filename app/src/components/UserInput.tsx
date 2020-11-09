@@ -6,19 +6,22 @@ const getUserStar = async (name: string) => { return await getStar(name) }
 class UserInput extends Component {
     handleSubmit = (event: { preventDefault: () => any; }) => event.preventDefault()
     state = {
-        name: ''
+        first: '',
+        second: ''
     }
-    handleChange = (e: { target: { value: any } }) => {
-        this.setState({
-            name: e.target.value
-        })
-    }
+    handleFirstChange = (e: any) => this.setState({first: e.target.value})
+    handleSecondChange = (e: any) => this.setState({second: e.target.value})
+
     render() {
         return (
             <div className="search">
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Github User Id" onChange={this.handleChange}></input>
-                    <button onClick={() => getUserStar(this.state.name).then(star => console.log(star))}>검색</button>
+                    <input placeholder="Github User Id" onChange={this.handleFirstChange}></input>
+                    <input placeholder="Github User Id" onChange={this.handleSecondChange}></input>
+                    <button onClick={() => {
+                        getUserStar(this.state.first).then(star => console.log('1: ' + star))
+                        getUserStar(this.state.second).then(star => console.log('2: ' + star))
+                        }}>검색</button>
                 </form>
             </div>
         )
