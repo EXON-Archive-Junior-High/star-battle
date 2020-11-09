@@ -43,6 +43,7 @@ input {
     -moz-border-radius: 5px;
     border-radius: 5px;
     outline: none;
+    margin-right: 10px;
 }
 
 button {
