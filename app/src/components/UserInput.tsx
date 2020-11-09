@@ -24,8 +24,10 @@ class UserInput extends Component {
     public async search() {
         user1.stars = await getUserStar(this.state.first)
         user2.stars = await getUserStar(this.state.second)
-        console.log('1:', user1.stars)
-        console.log('2:', user2.stars)
+        console.log('1:', user1.stars);
+        console.log('2:', user2.stars);
+        document.querySelector('#star1')!.innerHTML = user1.stars?.toString()
+        document.querySelector('#star2')!.innerHTML = user2.stars?.toString()
     }
 
     public render() {
@@ -35,9 +37,32 @@ class UserInput extends Component {
                     <input placeholder="Github Id" onChange={this.handleChangeFirst.bind(this)}></input>
                     <input placeholder="Github Id" onChange={this.handleChangeSecond.bind(this)}></input>
                     <button onClick={this.search.bind(this)}>검색</button>
-                    <h1>{user1.stars}</h1>
-                    <h1>{user2.stars}</h1>
                 </form>
+                <br/>
+                <div className="cards">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>user</th>
+                                <th>user</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th>
+                                <td>star</td>
+                                <td>followers</td>
+                                <td>commits</td>
+                            </th>
+                            <th>
+                                <td>star</td>
+                                <td>followers</td>
+                                <td>commits</td>
+                            </th>
+                        </tbody>
+                    </table>
+                    <h1 id="star1">1</h1>
+                    <h1 id="star2">2</h1>
+                </div>
 
             </div>
         )

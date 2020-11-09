@@ -58,3 +58,11 @@ button {
     border-radius: 4px;
     outline: none;
 }
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 10px;
+    border-color: white;
+}
