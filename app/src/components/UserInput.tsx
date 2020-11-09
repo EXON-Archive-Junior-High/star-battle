@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
-import { getStar } from '../data/GetStar'
-
-const getUserStar = async (name: string) => { return await getStar(name) }
+import React, { Component } from 'react'
+import { getStar as getUserStar } from '../data/GetStar'
 
 class UserInput extends Component {
-    handleSubmit = (event: { preventDefault: () => any; }) => event.preventDefault()
-    state = {
-        name: ''
+    public state = { name: '' }
+
+    public handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
     }
-    handleChange = (e: { target: { value: any } }) => {
+
+    public handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         this.setState({
             name: e.target.value
         })
     }
-    render() {
+
+    public async search() {
+        const stars = await getUserStar(this.state.name)
+        console.log(stars)
+    }
+
+    public render() {
         return (
             <div className="search">
-                <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Github User Id" onChange={this.handleChange}></input>
-                    <button onClick={() => getUserStar(this.state.name).then(star => console.log(star))}>검색</button>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                    <input placeholder="Github User Id" onChange={this.handleChange.bind(this)}></input>
+                    <button onClick={this.search.bind(this)}>검색</button>
                 </form>
             </div>
         )
