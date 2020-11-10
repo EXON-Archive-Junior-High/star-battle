@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getStar as getUserStar } from '../data/GetStar'
+import { getFollowers as getUserFollowers } from '../data/GetFollowers'
 import { user1, user2 } from '../models/users'
 
 const Selector = (param: string) => { return document.querySelector(param) }
@@ -24,12 +25,14 @@ class UserInput extends Component {
     }
 
     public async search() {
-        user1.Reset(this.state.first, await getUserStar(this.state.first))
-        user2.Reset(this.state.second, await getUserStar(this.state.second))
-        Selector('#star1')!.innerHTML = user1.stars?.toString()
-        Selector('#star2')!.innerHTML = user2.stars?.toString()
+        user1.Reset(this.state.first, await getUserStar(this.state.first), await getUserFollowers(this.state.first))
+        user2.Reset(this.state.second, await getUserStar(this.state.second), await getUserFollowers(this.state.second))
         Selector('#user1')!.innerHTML = user1.name
         Selector('#user2')!.innerHTML = user2.name
+        Selector('#star1')!.innerHTML = user1.stars?.toString()
+        Selector('#star2')!.innerHTML = user2.stars?.toString()
+        Selector('#followers1')!.innerHTML = user1.followers?.toString()
+        Selector('#followers2')!.innerHTML = user2.followers?.toString()
     }
 
     public render() {
@@ -57,7 +60,7 @@ class UserInput extends Component {
                             </th>
                             <th>
                                 <td>star<p id="star2"></p></td><br/>
-                                <td>followers</td><p id="followers2"></p><br/>
+                                <td>followers<p id="followers2"></p></td><br/>
                                 <td>commits<p id="commits2"></p></td><br/>
                             </th>
                         </tbody>
