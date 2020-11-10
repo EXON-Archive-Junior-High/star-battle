@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/App.css'
-import UserInput from './components/UserInput'
+import UserInput from './components/Main'
 
 
 function App() {

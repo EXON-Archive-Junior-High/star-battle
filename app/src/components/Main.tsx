@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getStar as getUserStar } from '../data/GetStar'
 import { getFollowers as getUserFollowers } from '../data/GetFollowers'
 import { user1, user2 } from '../models/users'
+import UserContent from './UserContent'
 
 const Selector = (param: string) => { return document.querySelector(param) }
 
@@ -44,28 +45,7 @@ class UserInput extends Component {
                     <button onClick={this.search.bind(this)}>검색</button>
                 </form>
                 <br/>
-                <div className="users">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th id="user1"></th>
-                                <th id="user2"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <th>
-                                <td>star<p id="star1"></p></td><br/>
-                                <td>followers<p id="followers1"></p></td><br/>
-                                <td>commits<p id="commits1"></p></td><br/>
-                            </th>
-                            <th>
-                                <td>star<p id="star2"></p></td><br/>
-                                <td>followers<p id="followers2"></p></td><br/>
-                                <td>commits<p id="commits2"></p></td><br/>
-                            </th>
-                        </tbody>
-                    </table>
-                </div>
+                <UserContent />
 
             </div>
         )
