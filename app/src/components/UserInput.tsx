@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { getStar as getUserStar } from '../data/GetStar'
 import { user1, user2 } from '../models/users'
 
+const Selector = (param: string) => { return document.querySelector(param) }
+
 class UserInput extends Component {
     public state = { first: '', second: '' }
 
@@ -22,12 +24,12 @@ class UserInput extends Component {
     }
 
     public async search() {
-        user1.stars = await getUserStar(this.state.first)
-        user2.stars = await getUserStar(this.state.second)
-        console.log('1:', user1.stars);
-        console.log('2:', user2.stars);
-        document.querySelector('#star1')!.innerHTML = user1.stars?.toString()
-        document.querySelector('#star2')!.innerHTML = user2.stars?.toString()
+        user1.Reset(this.state.first, await getUserStar(this.state.first))
+        user2.Reset(this.state.second, await getUserStar(this.state.second))
+        Selector('#star1')!.innerHTML = user1.stars?.toString()
+        Selector('#star2')!.innerHTML = user2.stars?.toString()
+        Selector('#user1')!.innerHTML = user1.name
+        Selector('#user2')!.innerHTML = user2.name
     }
 
     public render() {
@@ -39,35 +41,27 @@ class UserInput extends Component {
                     <button onClick={this.search.bind(this)}>검색</button>
                 </form>
                 <br/>
-                <div className="cards">
+                <div className="users">
                     <table>
                         <thead>
                             <tr>
-                                <th>user</th>
-                                <th>user</th>
+                                <th id="user1"></th>
+                                <th id="user2"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <th>
-                                <td>star</td>
-                                <br/>
-                                <td>followers</td>
-                                <br/>
-                                <td>commits</td>
-                                <br/>
+                                <td>star<p id="star1"></p></td><br/>
+                                <td>followers<p id="followers1"></p></td><br/>
+                                <td>commits<p id="commits1"></p></td><br/>
                             </th>
                             <th>
-                                <td>star</td>
-                                <br/>
-                                <td>followers</td>
-                                <br/>
-                                <td>commits</td>
-                                <br/>
+                                <td>star<p id="star2"></p></td><br/>
+                                <td>followers</td><p id="followers2"></p><br/>
+                                <td>commits<p id="commits2"></p></td><br/>
                             </th>
                         </tbody>
                     </table>
-                    <h1 id="star1">1</h1>
-                    <h1 id="star2">2</h1>
                 </div>
 
             </div>

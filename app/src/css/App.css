@@ -51,7 +51,6 @@ button {
     border: none;
     color: white;
     padding: 15px 32px;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -62,12 +61,17 @@ button {
 table {
     display: table;
     border-collapse: separate;
+    text-align: left;
     box-sizing: border-box;
     border-spacing: 10px;
     border-color: white;
 }
 
+.users {
+    text-align: center;
+}
+
 td, th {
-    border-bottom: 0.1rem solid #e1e1e1;
+    /* border-bottom: 0.1rem solid #e1e1e1; */
     padding-bottom: 0.3em;
 }
